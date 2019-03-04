@@ -24,8 +24,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     //-- define URL patterns to enable OAuth2 security
     http
         .authorizeRequests()
-        .antMatchers("/ciclobosque/createUser").permitAll()
-        .antMatchers("//ciclobosque/probarlaconexion").permitAll()
+        .antMatchers("/users/createUser").permitAll()
+        .antMatchers("//users/probarlaconexion").permitAll()
         .anyRequest().authenticated();
   }
 }

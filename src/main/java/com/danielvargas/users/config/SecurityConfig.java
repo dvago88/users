@@ -90,8 +90,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
         .authorizeRequests()
-        .antMatchers("/ciclobosque/createUser").permitAll()
-        .antMatchers("//ciclobosque/probarlaconexion").permitAll()
+        .antMatchers("/users/createUser").permitAll()
+        .antMatchers("//users/probarlaconexion").permitAll()
         .anyRequest().authenticated();
   }
 

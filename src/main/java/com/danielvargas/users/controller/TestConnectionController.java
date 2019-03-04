@@ -26,7 +26,7 @@ public class TestConnectionController {
    *
    * @return Usuario dummy para probar que los datos lleguen correctamente.
    */
-  @GetMapping(value = "/ciclobosque/probarlaconexion")
+  @GetMapping(value = "/users/probarlaconexion")
   public ResponseEntity<User> getDummyUser() {
     User mockedUser = new UserBuilder(1L)
         .withName("Daniel")

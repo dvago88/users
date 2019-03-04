@@ -53,6 +53,6 @@ public class TestConnectionControllerTest {
   @Test
   @WithUserDetails("test")
   public void getDummyUser() throws Exception {
-    mockMvc.perform(get("/ciclobosque/probarlaconexion").accept(MediaType.APPLICATION_JSON_UTF8_VALUE)).andReturn();
+    mockMvc.perform(get("/users/probarlaconexion").accept(MediaType.APPLICATION_JSON_UTF8_VALUE)).andReturn();
   }
 }

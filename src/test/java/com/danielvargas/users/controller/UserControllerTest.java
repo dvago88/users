@@ -65,7 +65,7 @@ public class UserControllerTest {
   public void createUserControllerCallsSaveMethodFromService() throws Exception {
     when(userServiceImpl.saveAsUser(new User())).thenReturn(new User());
     mockMvc.perform(
-        post("/ciclobosque/createUser")
+        post("/users/createUser")
             .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
             .content(asJsonString(new User()))
             .accept(MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -98,7 +98,7 @@ public class UserControllerTest {
   public void updateUser() throws Exception {
     when(userServiceImpl.update(new User())).thenReturn(new User());
     mockMvc.perform(
-        MockMvcRequestBuilders.put("/ciclobosque/updateUser")
+        MockMvcRequestBuilders.put("/users/updateUser")
             .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
             .content(asJsonString(new UserBuilder(1L).withUsername("test").build()))
             .accept(MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -113,7 +113,7 @@ public class UserControllerTest {
   @WithUserDetails("test")
   public void userCannotUpdateAnotherUser() throws Exception {
     mockMvc.perform(
-        MockMvcRequestBuilders.put("/ciclobosque/updateUser")
+        MockMvcRequestBuilders.put("/users/updateUser")
             .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
             .content(asJsonString(new UserBuilder(2L).withUsername("fake").build()))
             .accept(MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -129,7 +129,7 @@ public class UserControllerTest {
   public void getUserByUuidWorks() throws Exception {
     when(userServiceImpl.findUserByUuid(1L)).thenReturn(new User());
     mockMvc.perform(
-        MockMvcRequestBuilders.get("/ciclobosque/getUserByUuid")
+        MockMvcRequestBuilders.get("/users/getUserByUuid")
             .param("uuid", "1")
             .accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
         .andExpect(status().isOk())
@@ -143,7 +143,7 @@ public class UserControllerTest {
   public void nonAdminUserCannotSeeOtherUsers() throws Exception {
     when(userServiceImpl.findUserByUuid(1L)).thenReturn(new User());
     mockMvc.perform(
-        MockMvcRequestBuilders.get("/ciclobosque/getUserByUuid")
+        MockMvcRequestBuilders.get("/users/getUserByUuid")
             .param("uuid", "1")
             .accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
         .andExpect(status().isForbidden())
@@ -156,7 +156,7 @@ public class UserControllerTest {
   @WithUserDetails("test")
   public void getUserWorks() throws Exception {
     mockMvc.perform(
-        MockMvcRequestBuilders.get("/ciclobosque/getUser")
+        MockMvcRequestBuilders.get("/users/getUser")
             .accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
         .andExpect(status().isOk())
         .andReturn();

@@ -53,7 +53,7 @@ public class UserController {
    * @param user User to check existence or to create.
    * @return The newly created user or the old user.
    */
-  @PostMapping(value = "/ciclobosque/createUser",
+  @PostMapping(value = "/users/createUser",
       consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
       produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public ResponseEntity<User> createUser(@RequestBody User user) {
@@ -66,7 +66,7 @@ public class UserController {
    * @param user User to check existence or to create.
    * @return The newly created user, the old user or forbidden excaption.
    */
-  @PutMapping(value = "/ciclobosque/updateUser",
+  @PutMapping(value = "/users/updateUser",
       consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
       produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public ResponseEntity<User> updateUser(@RequestBody User user) {
@@ -83,7 +83,7 @@ public class UserController {
    * @return User.
    */
   @PreAuthorize("hasAuthority('admin')")
-  @GetMapping(value = "/ciclobosque/getUserByUuid",
+  @GetMapping(value = "/users/getUserByUuid",
       produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public ResponseEntity<User> getUserByUuid(@RequestParam Long uuid) {
     return new ResponseEntity<>(userService.findUserByUuid(uuid), HttpStatus.OK);
@@ -94,7 +94,7 @@ public class UserController {
    *
    * @return Logged User.
    */
-  @GetMapping(value = "/ciclobosque/getUser",
+  @GetMapping(value = "/users/getUser",
       produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
   public ResponseEntity<User> getUser() {
     UserDetails user = (UserDetails) getContext().getAuthentication().getPrincipal();
