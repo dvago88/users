@@ -56,7 +56,7 @@ public class DataConfig {
     HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
     factoryBean.setDataSource(dataSource());
     factoryBean.setJpaVendorAdapter(vendorAdapter);
-    factoryBean.setPackagesToScan(enviroment.getProperty("ciclobosque.entity.package"));
+    factoryBean.setPackagesToScan(enviroment.getProperty("users.entity.package"));
     factoryBean.setJpaProperties(getHibernateProperties());
     return factoryBean;
   }
@@ -85,10 +85,10 @@ public class DataConfig {
   @Bean
   public DataSource dataSource() {
     BasicDataSource dataSource = new BasicDataSource();
-    dataSource.setDriverClassName(enviroment.getProperty("ciclobosque.ds.driver"));
-    dataSource.setUrl(enviroment.getProperty("ciclobosque.datasource.url"));
-    dataSource.setUsername(enviroment.getProperty("ciclobosque.datasource.username"));
-    dataSource.setPassword(enviroment.getProperty("ciclobosque.datasource.password"));
+    dataSource.setDriverClassName(enviroment.getProperty("users.ds.driver"));
+    dataSource.setUrl(enviroment.getProperty("users.datasource.url"));
+    dataSource.setUsername(enviroment.getProperty("users.datasource.username"));
+    dataSource.setPassword(enviroment.getProperty("users.datasource.password"));
     return dataSource;
   }
 }
